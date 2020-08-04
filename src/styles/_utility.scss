@@ -1,0 +1,129 @@
+//breack's
+$break-xxs: 360px;
+$break-xs: 480px;
+$break-s: 600px;
+$break-m: 840px;
+$break-l: 960px;
+$break-xl: 1280px;
+$break-xxl: 1600px;
+$break-max: 1920px;
+
+//distance
+
+// a partir de: min-width:$break-xxs
+$dist-media-xxs: 10 * 1px;
+// $dist-media-xs: 10 * 1px;
+
+// a partir de: min-width:$break-s
+//$dist-media-s: 14 * 1px; 
+// $dist-media-m: 14 * 1px; 
+$dist-media-l: 14 * 1px; 
+// $dist-media-xl: 14 * 1px; 
+
+//rule para vários parametros com valores constantes
+// set properties and values($dist * value) to diferents media screens
+// scss aplication:
+//@include dist-behaviour-pro($props : ( 'padding' : (1,2) , 'margin' : (2,2,1))); 
+//  ||
+//@include dist-behaviour-pro($props : ( padding : 1 2 , margin : 2 2 1 )); 
+@mixin dist-behaviour-pro($props) {
+	@each $prop, $values in $props {
+		$result-value:'';
+		@each $value in $values { $result-value: $result-value + " " + ($dist-media-xxs * $value)}
+		#{$prop} : #{$result-value}; 
+	}
+
+	// @media screen and (min-width:$break-xs) {
+	// 	@each $prop, $values in $props {
+	// 		$result-value:'';
+	// 		@each $value in $values { $result-value: $result-value + " " + ($dist-media-xs * $value)}
+	// 		#{$prop} : #{$result-value}; 
+	// 	}
+	// }
+
+	// @media screen and (min-width:$break-s) {
+	// 	@each $prop, $values in $props {
+	// 		$result-value:'';
+	// 		@each $value in $values { $result-value: $result-value + " " + ($dist-media-s * $value)}
+	// 		#{$prop} : #{$result-value}; 
+	// 	}
+	// }
+
+	// @media screen and (min-width:$break-m) {
+	// 	@each $prop, $values in $props {
+	// 		$result-value:'';
+	// 		@each $value in $values { $result-value: $result-value + " " + ($dist-media-m * $value)}
+	// 		#{$prop} : #{$result-value}; 
+	// 	}
+	// }
+
+	@media screen and (min-width:$break-l) {
+		@each $prop, $values in $props {
+			$result-value:'';
+			@each $value in $values { $result-value: $result-value + " " + ($dist-media-l * $value)}
+			#{$prop} : #{$result-value}; 
+		}
+	}
+
+	// @media screen and (min-width:$break-xl) {
+	// 	@each $prop, $values in $props {
+	// 		$result-value:'';
+	// 		@each $value in $values { $result-value: $result-value + " " + ($dist-media-xl * $value)}
+	// 		#{$prop} : #{$result-value}; 
+	// 	}
+	// }
+}
+
+
+
+//rule para um paramentro com valores não constantes
+// scss example;
+//@include dist-media-behaviour(padding, 1,1,1,2,2,2);
+
+//   @mixin dist-media-behaviour($property, $value-xxs, $value-xs, $value-s, $value-m, $value-l, $value-xl) {
+  @mixin dist-media-behaviour($property, $value-xxs, $value-l) {
+    #{$property} : $dist-media-xxs * $value-xxs;
+	// @media screen and (min-width:$break-xs) {#{$property}: $dist-media-xs * $value-xs;}
+    // @media screen and (min-width:$break-s) {#{$property}: $dist-media-s * $value-s;}
+	// @media screen and (min-width:$break-m) {#{$property}: $dist-media-m * $value-m;}
+	@media screen and (min-width:$break-l) {#{$property}: $dist-media-l * $value-l;}
+	// @media screen and (min-width:$break-xl) {#{$property}: $dist-media-xl * $value-xl;}
+  }
+
+  
+
+//rule para dois paramentro com valores não constantes
+// scss example;
+//@include dist-media-behaviour2(padding, 1,1,1,2,2,2, padding, 1,1,1,2,2,2);
+
+//   @mixin dist-media-behaviour2(
+//       $property1, $value-xxs1, $value-xs1, $value-s1, $value-m1, $value-l1, $value-xl1, 
+//       $property2, $value-xxs2, $value-xs2, $value-s2, $value-m2, $value-l2, $value-xl2) {
+  @mixin dist-media-behaviour2(
+      $property1, $value-xxs1, $value-l1,
+      $property2, $value-xxs2, $value-l2) {
+
+    #{$property1} : $dist-media-xxs * $value-xxs1;
+    #{$property2} : $dist-media-xxs * $value-xxs2;
+
+	// @media screen and (min-width:$break-xs) {
+    //     #{$property1}: $dist-media-xs * $value-xs1;
+    //     #{$property2}: $dist-media-xs * $value-xs2;
+    // }
+    // @media screen and (min-width:$break-s) {
+    //     #{$property1}: $dist-media-s * $value-s1;
+    //     #{$property2}: $dist-media-s * $value-s2;
+    // }
+	// @media screen and (min-width:$break-m) {
+    //     #{$property1}: $dist-media-m * $value-m1;
+    //     #{$property2}: $dist-media-m * $value-m2;
+    // }
+	@media screen and (min-width:$break-l) {
+        #{$property1}: $dist-media-l * $value-l1;
+        #{$property2}: $dist-media-l * $value-l2;
+    }
+	// @media screen and (min-width:$break-xl) {
+    //     #{$property1}: $dist-media-xl * $value-xl1;
+    //     #{$property2}: $dist-media-xl * $value-xl2;
+    // }
+  }
