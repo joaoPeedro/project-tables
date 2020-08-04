@@ -4,7 +4,7 @@
   "description": "project tables",
   "main": "index.js",
   "scripts": {
-    "start": "webpack --mode=development",
+    "start": "webpack --mode=development -w",
     "build": "webpack --mode=production",
     "dev": "webpack-dev-server"
   },
@@ -34,6 +34,12 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/styles": "^4.10.0",
+    "@rjsf/core": "^2.2.2",
+    "@rjsf/material-ui": "^2.2.2",
+    "firebase": "^7.17.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   }

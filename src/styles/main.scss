@@ -1,4 +1,69 @@
-body {
-    background-color: deeppink;
-    * {color: deepskyblue;}
+// body {
+//     background-color: deeppink;
+//     // * {color: deepskyblue;}
+// }
+
+html, body {margin: 0; padding: 0; border: 0; vertical-align: baseline; background: #f6f6f6; font-family: 'Montserrat', sans-serif;}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {color: inherit; margin: 0;}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {display: block; }
+body {line-height: 1; }
+ol, ul {list-style: none; }
+blockquote, q {quotes: none; }
+blockquote:before, blockquote:after,
+q:before, q:after {content: ''; content: none; }
+table {border-collapse: collapse; border-spacing: 0; }
+
+h1,h2,h3,h4,h5,h6{ font-weight: 600; letter-spacing: 0.2em; line-height: 1.75em;}
+
+h1 {text-transform: uppercase; font-size: 28px;}
+
+p {font-size: 14px; font-weight: 200;}
+
+@import './utility';
+
+
+article { z-index: 0;}
+article > header { padding-bottom: 60px; background: #000; z-index: 0;}
+article > header > section.wrp {max-width: 1660px; margin: auto; display: flex; justify-content: space-between; color: #fff; padding: 40px 40px; }
+article > header > section.wrp > div.title { flex-grow: 1; padding: 0 40px;}
+article > header > section.wrp > div.actions { flex-grow: 1; padding: 0 40px;}
+article > header > section.wrp > div.actions ul.hyperlinks {display: flex; justify-content: flex-end;}
+article > header > section.wrp > div.actions ul.hyperlinks > li:last-child {margin-right: 0;}
+article > header > section.wrp > div.actions ul.hyperlinks > li a.icon-close-thin:before {content: "+" !important; font-family: arial !important; font-size: 18px; line-height: 18px;}
+
+article > section.main-content {
+    padding: 0 20px; margin-top: -80px; display: flex; max-width: 1660px; margin-left: auto; margin-right: auto;
+    
+        article.container{
+            display: flex; flex-basis: 100%; min-height: 70vh; 
+            padding: 20px; background: transparent;
+
+            > section.wrp{ 
+                padding: 40px; background: #fff; width: 100%; border-radius: 2px; box-shadow: 2px 4px 8px rgba(200,200,200,0.2);
+            }
+        }
+
+		article.table-content{ flex-basis: 60%; }
+		article.table-config{ flex-basis: 40%; min-height: 70vh; }
+		article.table-upload{ }
+        article.table-display{ }
+        
+    section.page-title{
+        @include dist-behaviour-pro($props : ( 'margin-bottom' : 2 ));
+    }
 }
