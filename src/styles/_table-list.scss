@@ -1,0 +1,28 @@
+.table-list{
+    @include dist-behaviour-pro($props : ( 
+        margin-top : 2, 
+        margin-bottom: 1 
+    ));
+    padding: 0;
+
+    > li{
+        @include dist-behaviour-pro($props : ( 
+            padding: 1 1
+        ));
+        display: flex; flex-flow: row wrap;
+        justify-content: space-between;
+
+        &.table-header{
+            background-color: $color-grey;
+            text-transform: uppercase;
+        }
+        &.table-item{
+            border-bottom: 1px solid $color-grey;
+        } 
+
+        > div {
+            display: flex; align-items: center; justify-content: flex-start;
+        }
+        
+    }
+}

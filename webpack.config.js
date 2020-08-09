@@ -8,6 +8,14 @@ module.exports = {
     path: path.join(__dirname, "public"),
     filename: "bundle.js",
   },
+
+    resolve: {
+    modules: [path.join(__dirname, 'src'), 'node_modules'],
+    alias: {
+      react: path.join(__dirname, 'node_modules', 'react'),
+    },
+  },
+  
   optimization: {
     minimize: true,
   },
@@ -27,8 +35,8 @@ module.exports = {
   devtool: "source-map",
   devServer: {
     contentBase: path.resolve(__dirname, "public"),
-    watchContentBase: true,
-    historyApiFallback: true,
+    // watchContentBase: true,
+    // historyApiFallback: true,
   },
   plugins: [
     /* new HtmlWebpackPlugin({

@@ -15,7 +15,7 @@ const Form = JSONSchemaForm.default; */
 const Upload = () => {
   const initialState = {
     configs: {
-      title: "test 3", // block of tables title
+      title: "", // block of tables title
       isActive: true, // true||false
       urlPages: [
         {
@@ -23,7 +23,7 @@ const Upload = () => {
           url: "",
         },
       ],
-      isEditing: true, // true||false
+      isEditing: false, // true||false
       activeUser: "", // user.userName
       userEditList: [
         // {
@@ -55,7 +55,7 @@ const Upload = () => {
       configs: {
         type: "object",
         title: "Configs",
-        required: ["title", "isActive"],
+        required: ["title"],
         properties: {
           title: {
             type: "string",
@@ -139,7 +139,7 @@ const Upload = () => {
           "ui:description": "JSON - table content",
 
           "ui:options": {
-            rows: 6,
+            rows: 16,
           },
           //   },
         },
@@ -167,14 +167,16 @@ const Upload = () => {
       });
 
       newBlTables.content.tables = tempTableList;
-    //   setNewTableDb(newBlTables);
+      setNewTableDb(newBlTables);
     } catch (error) {
       alert(error);
     }
   };
 
   const setNewTableDb = (data) => {
-    firebase.firestore().collection("tables").add(data);
+    firebase.firestore().collection("tables").add(data).then(
+      setFormData(initialState)
+    );
   };
 
   const log = (type) => console.log.bind(console, type);
